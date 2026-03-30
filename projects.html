@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAVVA • Проекты</title>
+   
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Advent+Pro:wght@400;500;600&display=swap');
+       
+        @font-face {
+            font-family: 'Brigadier Stencil';
+            src: url('D:/Универ/ИТ КУРСОВАЯ/Site/font/Brigadier-Stencil.otf') format('opentype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        * {
+            font-family: 'Advent Pro', system-ui, sans-serif;
+        }
+        .header-font {
+            font-family: 'Brigadier Stencil', sans-serif;
+        }
+
+        /* ====================== ОРБИТА ====================== */
+        #orbit-container {
+            width: 820px;
+            height: 820px;
+            position: relative;
+        }
+
+        #orbit {
+            position: absolute;
+            inset: 0;
+        }
+
+        .orbit-photo {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+            transition: all 0.4s ease;
+            left: 50%;
+            top: 50%;
+        }
+
+        .orbit-photo:hover {
+            transform: scale(1.25) !important;
+            z-index: 30;
+        }
+
+        /* Центральный текст строго по центру */
+        .central-text {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 20;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+       
+        .project-card:hover {
+            transform: scale(1.04);
+            box-shadow: 20px 20px 0 -5px #000;
+        }
+    </style>
+</head>
+<body class="bg-white text-black overflow-x-hidden">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-50 bg-white border-b border-black/10">
+        <div class="max-w-screen-2xl mx-auto px-8 py-6 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="text-5xl header-font tracking-[-4px]">SAVVA</div>
+            </a>
+            <nav class="flex items-center gap-12">
+                <a href="projects.html" class="text-[32px] font-bold text-black">ПРОЕКТЫ</a>
+                <a href="contacts.html" class="text-[32px] font-bold hover:text-gray-500 transition-colors">КОНТАКТЫ</a>
+            </nav>
+            <a href="connect.html" class="block w-[90px] h-[90px] transition-transform hover:scale-105 active:scale-95">
+                <img src="assetsproject/connect-button.png" alt="КОННЕКТ" class="w-full h-full object-contain drop-shadow-xl">
+            </a>
+        </div>
+    </header>
+
+    <!-- АНИМИРОВАННЫЙ БЛОК С ОРБИТОЙ -->
+    <section class="min-h-screen flex items-center py-20 relative">
+        <div class="max-w-screen-2xl mx-auto px-8 w-full">
+            <div class="flex justify-center">
+                <div id="orbit-container">
+                    <div class="central-text">
+                        <h1 class="text-[90px] leading-none header-font tracking-[-6px] text-black text-center">
+                            ПРОЕКТЫ
+                        </h1>
+                    </div>
+                    <div id="orbit"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-16 left-0 right-0 px-8">
+            <div class="max-w-screen-2xl mx-auto flex justify-between items-end text-base">
+                <div class="text-left">
+                    <div class="font-medium">[SAVVA YARIZ]</div>
+                    <div class="text-gray-600">(ПРОЕКТЫ 23-25)</div>
+                </div>
+                <div class="text-right">
+                    <div class="font-medium">[МОИ РАБОТЫ - СИНТЕЗ КОМПЕТЕНЦИЙ]</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК С КАРТОЧКАМИ ПРОЕКТОВ -->
+    <section class="py-28 bg-white">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-20 mb-20">
+                <a href="project1.html" class="project-card group block">
+                    <div class="overflow-hidden rounded-3xl border border-black aspect-[16/10] bg-gray-100">
+                        <img src="assetsproject/project-plant.png" alt="РАСТЕНИЕ МЫСЛИТ НАМИ" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    </div>
+                    <div class="mt-8 pl-1">
+                        <div class="text-5xl font-medium leading-none">РАСТЕНИЕ МЫСЛИТ НАМИ</div>
+                        <div class="mt-4 text-xl font-medium text-gray-700">ДЫШАЩИЙ ОРГАНИЗМ В МАСШТАБЕ ГОРОДА</div>
+                    </div>
+                </a>
+                <a href="project2.html" class="project-card group block">
+                    <div class="overflow-hidden rounded-3xl border border-black aspect-[16/10] bg-gray-100">
+                        <img src="assetsproject/buklet.jpg" alt="БУКЛЕТ" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    </div>
+                    <div class="mt-8 pl-1">
+                        <div class="text-5xl font-medium leading-none">БУКЛЕТ</div>
+                        <div class="mt-4 text-xl font-medium text-gray-700">СЕРИЯ МАТЕРИАЛОВ</div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="flex justify-center mb-20">
+                <a href="project3.html" class="project-card group block max-w-3xl w-full">
+                    <div class="overflow-hidden rounded-3xl border border-black aspect-[16/10] bg-gray-100">
+                        <img src="assetsproject/logobook.png" alt="ЛОГОБУК" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    </div>
+                    <div class="mt-8 pl-1 text-center">
+                        <div class="text-5xl font-medium leading-none">ЛОГОБУК</div>
+                        <div class="mt-4 text-xl font-medium text-gray-700">МНОГО ЛОГО И ПРИРОДЫ</div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-20">
+                <a href="project4.html" class="project-card group block md:-mt-12">
+                    <div class="overflow-hidden rounded-3xl border border-black aspect-[16/10] bg-gray-100">
+                        <img src="assetsproject/project-ivangorod.png" alt="ИВАНГОРОД" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    </div>
+                    <div class="mt-8 pl-1">
+                        <div class="text-5xl font-medium leading-none">ИВАНГОРОД</div>
+                        <div class="mt-4 text-xl font-medium text-gray-700">БРЕНДБУК • РОССИЯ НАЧИНАЕТСЯ ИМЕННО ЗДЕСЬ</div>
+                    </div>
+                </a>
+                <a href="project5.html" class="project-card group block">
+                    <div class="overflow-hidden rounded-3xl border border-black aspect-[16/10] bg-gray-100">
+                        <img src="assetsproject/robo.png" alt="ROBO" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+                    </div>
+                    <div class="mt-8 pl-1">
+                        <div class="text-5xl font-medium leading-none">ROBO</div>
+                        <div class="mt-4 text-xl font-medium text-gray-700">ФУТУРИСТИЧЕСКИЙ ПРОЕКТ</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+     <!-- FOOTER -->
+    <footer id="footer" class="relative bg-white text-black py-20 overflow-hidden border-t border-black/10">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="relative z-10 max-w-3xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-x-16 gap-y-12 text-left">
+                    <div>
+                        <div class="text-sm tracking-widest text-[#8F8F8F] mb-4">НАВИГАЦИЯ</div>
+                        <ul class="space-y-3">
+                            <li><a href="index.html" class="text-3xl font-medium hover:text-black transition-colors">ГЛАВНАЯ</a></li>
+                            <li><a href="projects.html" class="text-3xl font-medium hover:text-black transition-colors">ПРОЕКТЫ</a></li>
+                            <li><a href="contacts.html" class="text-3xl font-medium hover:text-black transition-colors">КОНТАКТЫ</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="text-sm tracking-widest text-[#8F8F8F] mb-4">SAVVA — ОНЛАЙН</div>
+                        <ul class="space-y-3">
+                            <li><a href="https://t.me/savvaaaaaaaa" target="_blank" class="text-3xl font-medium hover:text-black transition-colors">TELEGRAM</a></li>
+                            <li><a href="https://instagram.com/savva" target="_blank" class="text-3xl font-medium hover:text-black transition-colors">INSTAGRAM</a></li>
+                            <li><a href="https://www.behance.net/savva_yariz" target="_blank" class="text-3xl font-medium hover:text-black transition-colors">BEHANCE</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="text-sm tracking-widest text-[#8F8F8F] mb-4">КОНТАКТЫ</div>
+                        <div class="space-y-3">
+                            <a href="tel:+79113710107" class="block text-3xl font-medium hover:text-black transition-colors">+7 911 371 01 07</a>
+                            <a href="mailto:oneclass70@gmail.com" class="block text-3xl font-medium hover:text-black transition-colors">oneclass70@gmail.com</a>
+                            <div class="text-3xl font-medium">СПБ, ПСКОВ</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-14 flex justify-center">
+                    <div class="text-xs bg-black/5 px-6 py-4 inline-flex items-center gap-2 rounded-xl text-[#8F8F8F] max-w-fit">
+                        <span class="text-red-500">⚠️</span>
+                        Meta* признана экстремистской организацией<br>и запрещена на территории Российской Федерации
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex justify-center mt-20">
+                <img src="projectfour/SAVVA.png" alt="SAVVA" class="w-[1500px] h-auto opacity-90">
+            </div>
+            
+            <div class="flex flex-col md:flex-row justify-between items-center mt-16 pt-8 border-t border-black/10 text-xs text-[#8F8F8F]">
+                <div>ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</div>
+                <div class="text-4xl header-font text-black my-6 md:my-0 tracking-[-2px]">[SAVVA YARIZ]</div>
+                <div>SAVVA YARIZ. ВСЕ ПРАВА ЗАЩИЩЕНЫ.</div>
+            </div>
+        </div>
+
+        <button onclick="scrollToTop()" id="scrollTopBtn"
+                class="fixed bottom-8 right-8 z-50 w-14 h-14 bg-black text-white rounded-2xl flex items-center justify-center shadow-2xl hover:bg-gray-800 transition-all duration-300 opacity-0 translate-y-10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7" />
+            </svg>
+        </button>
+    </footer>
+
+    <script>
+        let photos = [];
+        let startTime = 0;
+        const rotationDuration = 85;
+
+        function createOrbit() {
+            const orbit = document.getElementById('orbit');
+            if (!orbit) return;
+            orbit.innerHTML = '';
+
+            const images = [
+                "assetsproject/logobook.png",
+                "assetsproject/project-ivangorod.png",
+                "assetsproject/project-plant.png",
+                "assetsproject/buklet.jpg",
+                "assetsproject/robo.png",
+                "assetsproject/av.jpg",
+                "assetsproject/igl.png",
+                "assetsproject/ivan.png"
+            ];
+
+            const radius = 320;
+            const total = images.length;
+            const angleStep = 360 / total;
+
+            photos = [];
+
+            images.forEach((src, i) => {
+                const div = document.createElement('div');
+                div.className = 'orbit-photo';
+                div.dataset.initialAngle = (i * angleStep).toString();
+
+                const img = document.createElement('img');
+                img.src = src;
+                img.className = 'w-full h-full object-cover';
+                div.appendChild(img);
+
+                orbit.appendChild(div);
+                photos.push(div);
+            });
+
+            startTime = Date.now();
+            animateOrbit();
+        }
+
+        function updatePhoto(photo, angleDeg) {
+            const radius = 320;
+            photo.style.transform = `
+                rotate(${angleDeg}deg) 
+                translate(${radius}px) 
+                rotate(-${angleDeg}deg) 
+                translate(-50%, -50%)
+            `;
+        }
+
+        function animateOrbit() {
+            const elapsed = (Date.now() - startTime) / 1000;
+            const currentRotation = (elapsed * (360 / rotationDuration)) % 360;
+
+            photos.forEach(photo => {
+                const initial = parseFloat(photo.dataset.initialAngle);
+                updatePhoto(photo, currentRotation + initial);
+            });
+
+            requestAnimationFrame(animateOrbit);
+        }
+
+        // Обновлённая функция перехода по проектам
+        function navigateTo(project) {
+            if (project === 'project1') window.location.href = 'project1.html';
+            else if (project === 'project2') window.location.href = 'project2.html';
+            else if (project === 'project3') window.location.href = 'project3.html';
+            else if (project === 'project4') window.location.href = 'project4.html';
+            else if (project === 'project5') window.location.href = 'project5.html';
+            else if (project === 'main') window.location.href = 'index.html';
+            else if (project === 'contacts') window.location.href = 'contacts.html';
+            else alert(`Открывается проект: ${project}`);
+        }
+
+        function toggleScrollTopButton() {
+            const btn = document.getElementById('scrollTopBtn');
+            if (window.scrollY > 600) {
+                btn.classList.remove('opacity-0', 'translate-y-10');
+                btn.classList.add('opacity-100', 'translate-y-0');
+            } else {
+                btn.classList.add('opacity-0', 'translate-y-10');
+                btn.classList.remove('opacity-100', 'translate-y-0');
+            }
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        window.addEventListener('load', () => {
+            createOrbit();
+            toggleScrollTopButton();
+        });
+
+        window.addEventListener('scroll', toggleScrollTopButton);
+    </script>
+</body>
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAVVA • БУКЛЕТ</title>
+   
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Advent+Pro:wght@400;500;600&display=swap');
+       
+        @font-face {
+            font-family: 'Brigadier Stencil';
+            src: url('D:/Универ/ИТ КУРСОВАЯ/Site/font/Brigadier-Stencil.otf') format('opentype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        * {
+            font-family: 'Advent Pro', system-ui, sans-serif;
+        }
+        .header-font {
+            font-family: 'Brigadier Stencil', sans-serif;
+        }
+
+        /* СЛАЙДЕР */
+        #slider {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        .slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 800ms ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #ffffff;
+        }
+        .slide.active {
+            opacity: 1;
+            z-index: 10;
+        }
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .multi-slide {
+            width: 100%;
+            height: 100%;
+            display: grid;
+            gap: 8px;
+            padding: 40px;
+        }
+        .multi-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgb(255, 255, 255);
+        }
+
+        /* Стрелки слайдера */
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 30;
+            width: 70px;
+            height: 70px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(12px);
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .slider-arrow:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-50%) scale(1.1);
+        }
+        .slider-arrow.left { left: 40px; }
+        .slider-arrow.right { right: 40px; }
+    </style>
+</head>
+<body class="bg-white text-black overflow-x-hidden">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-50 bg-white/20 backdrop-blur-md border-b border-black/10">
+        <div class="max-w-screen-2xl mx-auto px-8 py-6 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="projecttwo/SAVVA.png" alt="SAVVA" class="h-12">
+            </a>
+            <nav class="flex items-center gap-12">
+                <a href="projects.html" class="text-[32px] font-bold text-black">ПРОЕКТЫ</a>
+                <a href="contacts.html" class="text-[32px] font-bold hover:text-gray-500 transition-colors">КОНТАКТЫ</a>
+            </nav>
+            <a href="connect.html" class="block w-[90px] h-[90px] transition-transform hover:scale-105 active:scale-95">
+                <img src="projecttwo/connect-button.png" alt="КОННЕКТ" class="w-full h-full object-contain drop-shadow-xl">
+            </a>
+        </div>
+    </header>
+
+    <!-- ПОЛНОЭКРАННЫЙ ЗАЦИКЛЕННЫЙ СЛАЙДЕР -->
+    <section id="slider">
+        <!-- Слайды и стрелки добавляются через JS -->
+    </section>
+
+    <!-- ИНФОРМАЦИОННЫЙ БЛОК (для проекта БУКЛЕТ) -->
+    <section class="info-block py-28">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+                <div>
+                    <div class="text-[92px] leading-none header-font tracking-[-4px] mb-6">БУКЛЕТ</div>
+                    <div class="text-4xl font-medium mb-12">БРЕНДИНГ • 2024</div>
+                    
+                    <div class="mb-8">
+                        <div class="uppercase tracking-widest text-sm text-gray-500 mb-3">[КОМАНДА]</div>
+                        <div class="text-3xl font-medium">ИСПОЛНИТЕЛЬ — ЯРИЗ САВВА</div>
+                    </div>
+                    
+                    <a href="https://www.behance.net/savva_yariz" target="_blank"
+                       class="inline-flex items-center gap-3 text-3xl font-medium hover:text-gray-600 transition-colors">
+                        <span>ССЫЛКА</span>
+                        <span class="text-4xl">→</span>
+                        <span class="underline">BEHANCE</span>
+                    </a>
+                </div>
+                
+                <div class="text-3xl font-medium leading-tight text-gray-800">
+                    <div class="uppercase text-sm tracking-widest text-gray-400 mb-6">ИНФОРМАЦИЯ</div>
+                    БУКЛЕТ РАЗРАБОТАННЫЙ СПЕЦИАЛЬНО ПО ЗАКАЗУ ПСКОВСКОЙ 
+                    ОБЛАСТИ ДЛЯ ПРЕЗЕНТАЦИИ РЕГИОНА <br>НА ВЫСТАВКЕ ВДНХ. СИНТЕЗ
+                    ИСТОРИИ И АВТОРСКОЙ ГРАФИКИ В СОДРУЖЕСТВЕ С САМОЙ ВАЖНОЙ 
+                    ИНФОРМАЦИЕЙ ДЛЯ ТУРИСТА. <br>ТИРАЖ БУКЛЕТА ОКОЛО 10 000 ЭКЗЕМПЛЯРОВ.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК СЛЕДУЮЩЕГО ПРОЕКТА -->
+    <section class="py-20 border-t border-black/10">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <div class="text-sm tracking-widest text-gray-400">СЛЕДУЮЩИЙ ПРОЕКТ</div>
+                    <div onclick="navigateTo('project3')" class="cursor-pointer">
+                        <div class="text-[68px] leading-none header-font tracking-[-3px] hover:text-gray-600 transition-colors">ЛОГОБУК</div>
+                        <div class="text-2xl font-medium text-gray-700">МНОГО ЛОГО И ПРИРОДЫ • 2024</div>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-8">
+                    <!-- Предыдущий проект -->
+                    <a onclick="navigateTo('project1')" class="flex flex-col items-end cursor-pointer group">
+                        <div class="text-sm text-gray-400 group-hover:text-black transition-colors">ПРЕДЫДУЩИЙ ПРОЕКТ</div>
+                        <div class="flex items-center gap-3">
+                            <span class="text-7xl">←</span>
+                            <div>
+                                <div class="text-[42px] leading-none header-font tracking-[-2px]">РАСТЕНИЕ ДЫШИТ НАМИ</div>
+                                <div class="text-xl text-gray-600">КОНЦЕПЦИЯ 2025</div>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <!-- Следующий проект -->
+                    <a onclick="navigateTo('project3')" class="flex flex-col items-start cursor-pointer group">
+                        <div class="text-sm text-gray-400 group-hover:text-black transition-colors">СЛЕДУЮЩИЙ ПРОЕКТ</div>
+                        <div class="flex items-center gap-3">
+                            <div>
+                                <div class="text-[42px] leading-none header-font tracking-[-2px]">ЛОГОБУК</div>
+                                <div class="text-xl text-gray-600">МНОГО ЛОГО И ПРИРОДЫ</div>
+                            </div>
+                            <span class="text-7xl">→</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Превью следующего проекта -->
+            <a href="#" onclick="navigateTo('project3')" class="project-card block">
+                <img src="projecttwo/logobook.png" alt="ЛОГОБУК" 
+                     class="w-full rounded-3xl border border-black shadow-2xl">
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER (точно такой же как в project1) -->
+    <footer id="footer" class="relative bg-white text-black py-20 overflow-hidden border-t border-black/10">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="relative z-10 max-w-3xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-x-16 gap-y-12 text-left">
+                    <div>
+                        <div class="text-sm tracking-widest text-[#8F8F8F] mb-4">НАВИГАЦИЯ</div>
+                        <ul class="space-y-3">
+                            <li><a href="index.html" class="text-3xl font-medium hover:text-black transition-colors">ГЛАВНАЯ</a></li>
+                            <li><a href="projects.html" class="text-3xl font-medium hover:text-black transition-colors">ПРОЕКТЫ</a></li>
+                            <li><a href="contacts.html" class="text-3xl font-medium hover:text-black transition-colors">КОНТАКТЫ</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="text-sm tracking-widest text-[#8F8F8F] mb-4">SAVVA — ОНЛАЙН</div>
+                        <ul class="space-y-3">
+                            <li><a href="https://t.me/savvaaaaaaaa" target="_blank" class="text-3xl font-medium hover:text-black transition-colors">TELEGRAM</a></li>
+                            <li><a href="https://instagram.com/yariz" target="_blank" class="text-3xl font-medium hover:text-black transition-colors">INSTAGRAM</a></li>
+                            <li><a href="https://www.behance.net/savva_yariz" target="_blank" class="text-3xl font-medium hover:text-black transition-colors">BEHANCE</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="text-sm tracking-widest text-[#8F8F8F] mb-4">КОНТАКТЫ</div>
+                        <div class="space-y-3">
+                            <a href="tel:+79113710107" class="block text-3xl font-medium hover:text-black transition-colors">+7 911 371 01 07</a>
+                            <a href="mailto:oneclass70@gmail.com" class="block text-3xl font-medium hover:text-black transition-colors">oneclass70@gmail.com</a>
+                            <div class="text-3xl font-medium">СПБ, ПСКОВ</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-14 flex justify-center">
+                    <div class="text-xs bg-black/5 px-6 py-4 inline-flex items-center gap-2 rounded-xl text-[#8F8F8F] max-w-fit">
+                        <span class="text-red-500">⚠️</span>
+                        Meta* признана экстремистской организацией<br>и запрещена на территории Российской Федерации
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex justify-center mt-20">
+                <img src="projecttwo/SAVVA.png" alt="SAVVA" class="w-[1500px] h-auto opacity-90">
+            </div>
+            
+            <div class="flex flex-col md:flex-row justify-between items-center mt-16 pt-8 border-t border-black/10 text-xs text-[#8F8F8F]">
+                <div>ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</div>
+                <div class="text-4xl header-font text-black my-6 md:my-0 tracking-[-2px]">[SAVVA YARIZ]</div>
+                <div>SAVVA YARIZ. ВСЕ ПРАВА ЗАЩИЩЕНЫ.</div>
+            </div>
+        </div>
+
+        <button onclick="scrollToTop()" id="scrollTopBtn"
+                class="fixed bottom-8 right-8 z-50 w-14 h-14 bg-black text-white rounded-2xl flex items-center justify-center shadow-2xl hover:bg-gray-800 transition-all duration-300 opacity-0 translate-y-10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7" />
+            </svg>
+        </button>
+    </footer>
+
+    <script>
+        // ==================== СЛАЙДЕР ====================
+        const slidesData = [
+            { type: 'multi', srcs: ['projecttwo/vst.png', 'projecttwo/bukletpro2.jpg'] },
+            { type: 'single', src: 'projecttwo/bukletpro.jpg' },
+            { type: 'single', src: 'projecttwo/buklet2.jpg' }
+        ];
+
+        let currentIndex = 0;
+        let autoInterval = null;
+
+        function createSlides() {
+            const container = document.getElementById('slider');
+            container.innerHTML = '';
+
+            slidesData.forEach((slide, i) => {
+                const slideDiv = document.createElement('div');
+                slideDiv.className = `slide ${i === 0 ? 'active' : ''}`;
+                slideDiv.id = `slide-${i}`;
+                
+                if (slide.type === 'single') {
+                    slideDiv.innerHTML = `<img src="${slide.src}" alt="БУКЛЕТ">`;
+                } else {
+                    // Для 2-х изображений — 2 колонки
+                    let html = `<div class="multi-slide" style="grid-template-columns: repeat(${slide.srcs.length}, 1fr);">`;
+                    slide.srcs.forEach(src => {
+                        html += `<img src="${src}" alt="БУКЛЕТ">`;
+                    });
+                    html += `</div>`;
+                    slideDiv.innerHTML = html;
+                }
+                
+                container.appendChild(slideDiv);
+            });
+
+            // Стрелки
+            const arrowsHTML = `
+                <div onclick="prevSlide()" class="slider-arrow left">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </div>
+                <div onclick="nextSlide()" class="slider-arrow right">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                </div>
+            `;
+            container.insertAdjacentHTML('beforeend', arrowsHTML);
+        }
+
+        function showSlide(index) {
+            document.querySelectorAll('.slide').forEach(slide => slide.classList.remove('active'));
+            document.getElementById(`slide-${index}`).classList.add('active');
+            currentIndex = index;
+        }
+
+        function nextSlide() {
+            let next = (currentIndex + 1) % slidesData.length;
+            showSlide(next);
+            resetAutoSlide();
+        }
+
+        function prevSlide() {
+            let prev = (currentIndex - 1 + slidesData.length) % slidesData.length;
+            showSlide(prev);
+            resetAutoSlide();
+        }
+
+        function startAutoSlide() {
+            if (autoInterval) clearInterval(autoInterval);
+            autoInterval = setInterval(() => nextSlide(), 6000);
+        }
+
+        function resetAutoSlide() {
+            if (autoInterval) clearInterval(autoInterval);
+            startAutoSlide();
+        }
+
+        function navigateTo(project) {
+            if (project === 'project1') window.location.href = 'project1.html';
+            else if (project === 'project3') window.location.href = 'project3.html';
+            else alert(`Открывается проект: ${project}`);
+        }
+
+        function toggleScrollTopButton() {
+            const btn = document.getElementById('scrollTopBtn');
+            if (window.scrollY > 600) {
+                btn.classList.remove('opacity-0', 'translate-y-10');
+                btn.classList.add('opacity-100', 'translate-y-0');
+            } else {
+                btn.classList.add('opacity-0', 'translate-y-10');
+                btn.classList.remove('opacity-100', 'translate-y-0');
+            }
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        window.addEventListener('load', () => {
+            createSlides();
+            toggleScrollTopButton();
+            startAutoSlide();
+
+            const slider = document.getElementById('slider');
+            slider.addEventListener('mouseenter', () => { if (autoInterval) clearInterval(autoInterval); });
+            slider.addEventListener('mouseleave', () => startAutoSlide());
+        });
+
+        window.addEventListener('scroll', toggleScrollTopButton);
+    </script>
+</body>
+</html>

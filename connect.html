@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAVVA • Коннект</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Advent+Pro:wght@400;500;600&display=swap');
+        
+        @font-face {
+            font-family: 'Brigadier Stencil';
+            src: url('D:/Универ/ИТ КУРСОВАЯ/Site/font/Brigadier-Stencil.otf') format('opentype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        * {
+            font-family: 'Advent Pro', system-ui, sans-serif;
+        }
+
+        .header-font {
+            font-family: 'Brigadier Stencil', sans-serif;
+        }
+
+       /* Форма — улучшенное выравнивание линий */
+        .connect-input {
+            width: 100%;
+            border-bottom: 2px solid #000;
+            padding-bottom: 8px;
+            font-size: 18px;
+            background: transparent;
+            outline: none;
+        }
+
+        .connect-textarea {
+            width: 100%;
+            border-bottom: 2px solid #000;
+            padding-bottom: 8px;
+            font-size: 18px;
+            background: transparent;
+            outline: none;
+            min-height: 110px;
+            resize: none;
+        }
+    </style>
+</head>
+<body class="bg-white text-black overflow-x-hidden">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 z-50 bg-white border-b border-black/10">
+        <div class="max-w-screen-2xl mx-auto px-8 py-6 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="text-5xl header-font tracking-[-4px]">SAVVA</div>
+            </a>
+
+            <nav class="flex items-center gap-12">
+                <a href="projects.html" class="text-[32px] font-bold hover:text-gray-500 transition-colors">ПРОЕКТЫ</a>
+                <a href="contacts.html" class="text-[32px] font-bold hover:text-gray-500 transition-colors">КОНТАКТЫ</a>
+            </nav>
+
+            <a href="connect.html" class="block w-[90px] h-[90px] transition-transform hover:scale-105 active:scale-95">
+                <img src="assetsp3/connect-button.png" alt="КОННЕКТ" class="w-full h-full object-contain drop-shadow-xl">
+            </a>
+        </div>
+    </header>
+
+    <!-- ГЛАВНЫЙ КОНТЕНТ КОННЕКТ -->
+    <section class="connect-section py-20">
+        <div class="max-w-screen-2xl mx-auto px-8 w-full">
+            <div class="flex items-center justify-between gap-12">
+                
+                <!-- Левое изображение (man2.png) -->
+                <div class="hidden lg:block flex-shrink-0 -ml-12">
+                    <img src="assetsp3/man2.png" 
+                         alt="Человек" 
+                         class="man-image">
+                </div>
+
+                <!-- Центральная форма -->
+                <div class="flex-1 max-w-lg mx-auto text-center">
+                    <h1 class="text-[68px] leading-[72px] header-font tracking-[-2px] mb-16">
+                        ОСТАВЬ СООБЩЕНИЕ<br>
+                        ДЛЯ АВТОРА
+                    </h1>
+
+                    <form class="space-y-8">
+                        <div>
+                            <label class="block text-sm tracking-widest text-gray-500 mb-2">КОНТАКТЫ</label>
+                            <input type="text" placeholder="Телефон или почта" 
+                                   class="w-full border-b border-black pb-3 text-lg focus:outline-none bg-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm tracking-widest text-gray-500 mb-2">ИМЯ</label>
+                            <input type="text" placeholder="Как к тебе обращаться" 
+                                   class="w-full border-b border-black pb-3 text-lg focus:outline-none bg-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm tracking-widest text-gray-500 mb-2">СООБЩЕНИЕ</label>
+                            <textarea placeholder="Расскажи, что хочешь сделать..." 
+                                      rows="4"
+                                      class="w-full border-b border-black pb-3 text-lg focus:outline-none resize-none bg-transparent"></textarea>
+                        </div>
+
+                        <button type="submit" class="mt-8 inline-block transition-all duration-300 hover:scale-105 active:scale-95">
+                            <img src="assetsp3/Component 5.png" 
+                                 alt="Отправить" 
+                                 class="w-auto max-w-[320px] h-auto mx-auto">
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Правое изображение (man1.png) -->
+                <div class="hidden lg:block flex-shrink-0 -mr-12">
+                    <img src="assetsp3/man1.png" 
+                         alt="Человек" 
+                         class="man-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="footer" class="relative bg-white text-black py-20 overflow-hidden border-t border-black/10">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="relative z-10 max-w-3xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-x-16 gap-y-12 text-left">
+                    <div>
+                        <div class="text-sm tracking-widest text-[#8F8F8F] mb-4">НАВИГАЦИЯ</div>
+                        <ul class="space-y-3">
+                            <li><a href="index.html" class="text-3xl font-medium hover:text-black transition-colors">ГЛАВНАЯ</a></li>
+                            <li><a href="projects.html" class="text-3xl font-medium hover:text-black transition-colors">ПРОЕКТЫ</a></li>
+                            <li><a href="contacts.html" class="text-3xl font-medium hover:text-black transition-colors">КОНТАКТЫ</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="text-sm tracking-widest text-[#8F8F8F] mb-4">SAVVA — ОНЛАЙН</div>
+                        <ul class="space-y-3">
+                            <li><a href="https://t.me/savvaaaaaaaa" target="_blank" class="text-3xl font-medium hover:text-black transition-colors">TELEGRAM</a></li>
+                            <li><a href="https://instagram.com/savva" target="_blank" class="text-3xl font-medium hover:text-black transition-colors">INSTAGRAM</a></li>
+                            <li><a href="https://www.behance.net/savva_yariz" target="_blank" class="text-3xl font-medium hover:text-black transition-colors">BEHANCE</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="text-sm tracking-widest text-[#8F8F8F] mb-4">КОНТАКТЫ</div>
+                        <div class="space-y-3">
+                            <a href="tel:+79113710107" class="block text-3xl font-medium hover:text-black transition-colors">+7 911 371 01 07</a>
+                            <a href="mailto:oneclass70@gmail.com" class="block text-3xl font-medium hover:text-black transition-colors">oneclass70@gmail.com</a>
+                            <div class="text-3xl font-medium">СПБ, ПСКОВ</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-14 flex justify-center">
+                    <div class="text-xs bg-black/5 px-6 py-4 inline-flex items-center gap-2 rounded-xl text-[#8F8F8F] max-w-fit">
+                        <span class="text-red-500">⚠️</span>
+                        Meta* признана экстремистской организацией<br>и запрещена на территории Российской Федерации
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex justify-center mt-20">
+                <img src="projectfour/SAVVA.png" alt="SAVVA" class="w-[1500px] h-auto opacity-90">
+            </div>
+            
+            <div class="flex flex-col md:flex-row justify-between items-center mt-16 pt-8 border-t border-black/10 text-xs text-[#8F8F8F]">
+                <div>ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</div>
+                <div class="text-4xl header-font text-black my-6 md:my-0 tracking-[-2px]">[SAVVA YARIZ]</div>
+                <div>SAVVA YARIZ. ВСЕ ПРАВА ЗАЩИЩЕНЫ.</div>
+            </div>
+        </div>
+
+        <button onclick="scrollToTop()" id="scrollTopBtn"
+                class="fixed bottom-8 right-8 z-50 w-14 h-14 bg-black text-white rounded-2xl flex items-center justify-center shadow-2xl hover:bg-gray-800 transition-all duration-300 opacity-0 translate-y-10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7" />
+            </svg>
+        </button>
+    </footer>
+
+    <script>
+        // Обработка отправки формы
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Сообщение отправлено! SAVVA свяжется с тобой в ближайшее время.');
+        });
+
+        // Показывать кнопку "Наверх"
+        function toggleScrollTopButton() {
+            const btn = document.getElementById('scrollTopBtn');
+            if (window.scrollY > 600) {
+                btn.classList.remove('opacity-0', 'translate-y-10');
+                btn.classList.add('opacity-100', 'translate-y-0');
+            } else {
+                btn.classList.add('opacity-0', 'translate-y-10');
+                btn.classList.remove('opacity-100', 'translate-y-0');
+            }
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        window.addEventListener('scroll', toggleScrollTopButton);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            toggleScrollTopButton();
+        });
+    </script>
+</body>
+</html>

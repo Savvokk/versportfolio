@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAVVA • Главная</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Advent Pro -->
+    <link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet">
+    
+    <!-- GSAP для плавных анимаций -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Advent+Pro:wght@400;500;600&amp;display=swap');
+        
+        /* Brigadier Stencil — замените путь на свой шрифт (скачайте с cdnfonts.com или befonts) */
+       @font-face {
+            font-family: 'Brigadier Stencil';
+            src: url('D:/Универ/ИТ КУРСОВАЯ/Site/font/Brigadier-Stencil.otf') format('opentype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        :root {
+            --tw-color-primary: #000000;
+        }
+        
+        * {
+            font-family: 'Advent Pro', system-ui, sans-serif;
+        }
+        
+        .header-font {
+            font-family: 'Brigadier Stencil', sans-serif;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(to bottom, #ffffff 0%, #f8f8f8 100%);
+        }
+        
+        .section-header {
+            font-family: 'Brigadier Stencil', sans-serif;
+            font-size: 96px;
+            line-height: 100%;
+            letter-spacing: -0.04em;
+        }
+        /* Размер текста в хэдере — 32px */
+        .nav-link {
+            font-size: 32px;
+            font-weight: 500;
+        }
+        
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .project-card:hover {
+            transform: scale(1.03);
+            box-shadow: 25px 25px 0 -5px #000;
+        }
+        
+        .floating-panel {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover .floating-panel {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* ПЛАВАЮЩАЯ ПЛАШКА — ЕЩЁ БЛИЖЕ К КУРСОРУ */
+        .floating-label {
+            position: absolute;
+            pointer-events: none;
+            background: #111;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 6px 14px;
+            border-radius: 9999px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            z-index: 30;
+            box-shadow: 0 10px 20px -5px rgb(0 0 0 / 0.3);
+            will-change: transform;
+        }
+        
+        .large-savva {
+    font-size: 380px;
+    line-height: 0.75;
+    font-family: 'Brigadier Stencil', sans-serif;
+    letter-spacing: -0.08em;
+    font-weight: 400;
+}
+        
+        video {
+            filter: contrast(1.1) brightness(0.95);
+        }
+        
+        .character-container {
+            filter: drop-shadow(30px 30px 0 #111);
+        }
+        #scrollTopBtn {
+    box-shadow: 0 10px 25px -5px rgb(0 0 0 / 0.3);
+}
+    </style>
+</head>
+<body class="bg-white text-black overflow-x-hidden">
+
+   <!-- HEADER -->
+<header class="sticky top-0 z-50 bg-white border-b border-black/10">
+    <div class="max-w-screen-2xl mx-auto px-8 py-6 flex items-center justify-between">
+        
+        <!-- Логотип -->
+        <a href="#" class="flex items-center gap-3">
+            <div class="text-5xl header-font tracking-[-4px]">SAVVA</div>
+        </a>
+
+        <!-- Навигация -->
+        <nav class="flex items-center gap-12">
+            <a href="projects.html" onclick="navigateTo('projects')" 
+               class="text-[32px] font-bold hover:text-gray-500 transition-colors">ПРОЕКТЫ</a>
+            <a href="contacts.html" onclick="navigateTo('contacts.html')" 
+               class="text-[32px] font-bold hover:text-gray-500 transition-colors">КОНТАКТЫ</a>
+        </nav>
+
+        <!-- Кнопка КОННЕКТ — как изображение -->
+        <a href="connect.html" onclick="navigateTo('connect')" class="block w-[90px] h-[90px] transition-transform hover:scale-105 active:scale-95">
+            <img src="assets/connect-button.png" 
+                 alt="КОННЕКТ" 
+                 class="w-full h-full object-contain drop-shadow-xl">
+        </a>
+    </div>
+</header>
+<!-- Кнопка DARK / WHITE (слева от персонажа) -->
+        <button id="theme-btn" 
+                onclick="toggleThemeButton()"
+                class="relative w-24 h-24 transition-all active:scale-95">
+            <!-- По умолчанию показываем Shape.png (тёмная) -->
+            <img id="dark-btn" 
+                 src="assets/Shape.png" 
+                 alt="DARK" 
+                 class="w-full h-full object-contain drop-shadow-xl">
+            
+            <!-- Светлая версия (скрыта изначально) -->
+            <img id="white-btn" 
+                 src="assets/Group 6.png" 
+                 alt="WHITE" 
+                 class="w-full h-full object-contain drop-shadow-xl hidden">
+        </button>
+ <!-- ====================== HERO SECTION ====================== -->
+<section class="hero-bg pt-12 pb-24">
+    <div class="max-w-screen-2xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+       <!-- ЛЕВАЯ КОЛОНКА — Персонаж + Кнопка DARK/WHITE -->
+<div class="lg:col-span-5 flex flex-col items-center lg:items-start">
+
+    <!-- Время и переключатель языка -->
+    <div class="flex items-center justify-between w-full max-w-[420px] mb-10">
+        <div class="flex items-center gap-3 text-sm font-medium">
+            <div class="w-6 h-6 border border-black flex items-center justify-center text-xs">🕒</div>
+            <span id="utc-time" class="font-mono">17:50:51 UTC +3</span>
+        </div>
+        
+        <div class="flex border border-black rounded-full overflow-hidden text-sm font-medium">
+            <button onclick="switchLanguage('en')" 
+                    class="px-5 py-2 hover:bg-black hover:text-white transition-colors">EN</button>
+            <button onclick="switchLanguage('ru')" 
+                    class="px-5 py-2 bg-black text-white">RU</button>
+        </div>
+    </div>
+
+    <div class="flex flex-col items-center gap-8">
+        
+        
+
+        <!-- Персонаж -->
+        
+            <img src="assets/hero-component.png" 
+                 alt="SAVVA персонаж" 
+                 class="w-full drop-shadow-2xl">
+        
+    </div>
+</div>
+
+        <!-- ПРАВАЯ КОЛОНКА — Текст + Видео -->
+        <div class="lg:col-span-7">
+            <div class="max-w-2xl">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-8 text-[32px] leading-tight font-medium">
+                    <div>Я ЗАНИМАЮСЬ<br>РАЗРАБОТКОЙ<br>ВИЗУАЛЬНЫХ<br>ОБРАЗОВ,</div>
+                    <div>АЙДЕНТИКИ,<br>УПАКОВКИ<br>И МНОГОГО<br>ДРУГОГО</div>
+                    <div class="md:text-right">ДЛЯ<br>ПРОЕКТОВ,<br>ТЕРРИТОРИЙ,<br>КОМПАНИЙ,<br>И ИВЕНТОВ</div>
+                </div>
+            </div>
+
+            <!-- Видео -->
+            <div class="mt-16 max-w-2xl mx-auto lg:mx-0">
+                <video id="hero-video" class="w-full rounded-3xl shadow-2xl border border-black/10" autoplay loop muted playsinline>
+                    <source src="assets/hero-video.mp4" type="video/mp4">
+                </video>
+                <p class="text-xs text-center mt-4 text-gray-500">*видео где машу рукой или что то такое</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- БЛОК СУПЕРСИЛА -->
+<section class="py-20 border-t-2 border-b-2 border-black">
+    <div class="max-w-screen-2xl mx-auto px-8">
+        <p class="max-w-none text-[26px] leading-[1.35] font-medium text-left">
+            Моя «<span class="font-bold">СУПЕРСИЛА</span>» — синтез компетенций, редко встречающийся на рынке: 
+            классическая художественная школа, современные цифровые технологии и развитые лидерские качества. 
+            Я работаю с графическим дизайном, фирменными стилями, 3D-визуализацией и проектированием пространств, 
+            опираясь на понимание принципов композиции, искусства и архитектуры, — благодаря этому 
+            <span class="font-bold">создаю концептуально выверенные проекты</span>, а не просто «красивые картинки».
+        </p>
+    </div>
+</section>
+
+<!-- СВЕЖИЕ ПРОЕКТЫ -->
+    <section id="projects" class="py-20 bg-white">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <h2 class="section-header text-left mb-16">СВЕЖИЕ ПРОЕКТЫ</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Проект 1 -->
+                <a href="project1.html" class="project-card group block">
+                    <div class="relative overflow-hidden rounded-3xl border border-black aspect-[16/10] bg-gray-100">
+                        <img src="assets/project-plant.png" alt="РАСТЕНИЕ МЫСЛИТ НАМИ" class="w-full h-full object-cover">
+                        <div class="floating-label">ДЫШАЩИЙ ОРГАНИЗМ В МАСШТАБЕ ГОРОДА</div>
+                    </div>
+                    <div class="mt-6 pl-1">
+                        <div class="text-5xl font-medium leading-none">РАСТЕНИЕ МЫСЛИТ НАМИ</div>
+                    </div>
+                </a>
+
+                <!-- Проект 4 -->
+                <a href="project4.html" class="project-card group block">
+                    <div class="relative overflow-hidden rounded-3xl border border-black aspect-[16/10] bg-gray-100">
+                        <img src="assets/project-ivangorod.png" alt="ИВАНГОРОД" class="w-full h-full object-cover">
+                        <div class="floating-label">РОССИЯ НАЧИНАЕТСЯ ИМЕННО ЗДЕСЬ</div>
+                    </div>
+                    <div class="mt-6 pl-1">
+                        <div class="text-5xl font-medium leading-none">БРЕНДБУК ИВАНГОРОД</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ЛОГОБУК -->
+    <section class="py-20 border-t-2 border-black">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="flex justify-center">
+                <a href="project3.html" class="project-card group block max-w-3xl w-full">
+                    <div class="relative overflow-hidden rounded-3xl border border-black aspect-[16/10] bg-gray-100">
+                        <img src="assets/logobook.png" alt="ЛОГОБУК" class="w-full h-full object-cover">
+                        <div class="floating-label">МНОГО ЛОГО И ПРИРОДЫ</div>
+                    </div>
+                    <div class="mt-6 pl-1">
+                        <div class="text-5xl font-medium leading-none">ЛОГОБУК</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+  <!-- Кнопка ВСЕ ПРОЕКТЫ -->
+    <div class="max-w-screen-2xl mx-auto px-8 pb-20">
+        <a href="projects.html" 
+           class="block w-fit ml-auto text-6xl header-font border-b-4 border-black pb-1 hover:border-black/30 transition-colors">
+            ВСЕ ПРОЕКТЫ (5)
+        </a>
+    </div>
+
+   <!-- FOOTER -->
+    <footer id="footer" class="relative bg-white text-black py-20 overflow-hidden border-t border-black/10">
+        <div class="max-w-screen-2xl mx-auto px-8">
+            <div class="relative z-10 max-w-3xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-x-16 gap-y-12 text-left">
+                    <div>
+                        <div class="text-sm tracking-widest text-[#8F8F8F] mb-4">НАВИГАЦИЯ</div>
+                        <ul class="space-y-3">
+                            <li><a href="index.html" class="text-3xl font-medium hover:text-black transition-colors">ГЛАВНАЯ</a></li>
+                            <li><a href="projects.html" class="text-3xl font-medium hover:text-black transition-colors">ПРОЕКТЫ</a></li>
+                            <li><a href="contacts.html" class="text-3xl font-medium hover:text-black transition-colors">КОНТАКТЫ</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="text-sm tracking-widest text-[#8F8F8F] mb-4">SAVVA — ОНЛАЙН</div>
+                        <ul class="space-y-3">
+                            <li><a href="https://t.me/savvaaaaaaaa" target="_blank" class="text-3xl font-medium hover:text-black transition-colors">TELEGRAM</a></li>
+                            <li><a href="https://instagram.com/savva" target="_blank" class="text-3xl font-medium hover:text-black transition-colors">INSTAGRAM</a></li>
+                            <li><a href="https://www.behance.net/savva_yariz" target="_blank" class="text-3xl font-medium hover:text-black transition-colors">BEHANCE</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="text-sm tracking-widest text-[#8F8F8F] mb-4">КОНТАКТЫ</div>
+                        <div class="space-y-3">
+                            <a href="tel:+79113710107" class="block text-3xl font-medium hover:text-black transition-colors">+7 911 371 01 07</a>
+                            <a href="mailto:oneclass70@gmail.com" class="block text-3xl font-medium hover:text-black transition-colors">oneclass70@gmail.com</a>
+                            <div class="text-3xl font-medium">СПБ, ПСКОВ</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-14 flex justify-center">
+                    <div class="text-xs bg-black/5 px-6 py-4 inline-flex items-center gap-2 rounded-xl text-[#8F8F8F] max-w-fit">
+                        <span class="text-red-500">⚠️</span>
+                        Meta* признана экстремистской организацией<br>и запрещена на территории Российской Федерации
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex justify-center mt-20">
+                <img src="projectfour/SAVVA.png" alt="SAVVA" class="w-[1500px] h-auto opacity-90">
+            </div>
+            
+            <div class="flex flex-col md:flex-row justify-between items-center mt-16 pt-8 border-t border-black/10 text-xs text-[#8F8F8F]">
+                <div>ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ</div>
+                <div class="text-4xl header-font text-black my-6 md:my-0 tracking-[-2px]">[SAVVA YARIZ]</div>
+                <div>SAVVA YARIZ. ВСЕ ПРАВА ЗАЩИЩЕНЫ.</div>
+            </div>
+        </div>
+
+        <button onclick="scrollToTop()" id="scrollTopBtn"
+                class="fixed bottom-8 right-8 z-50 w-14 h-14 bg-black text-white rounded-2xl flex items-center justify-center shadow-2xl hover:bg-gray-800 transition-all duration-300 opacity-0 translate-y-10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7" />
+            </svg>
+        </button>
+    </footer>
+    <script>
+        // Tailwind script init
+        function initializeTailwind() {
+            tailwind.config = {
+                content: ["./**/*.{html,js}"],
+                theme: { extend: {} }
+            }
+        }
+        
+        // Обновление времени UTC+3
+        function updateTime() {
+            const timeEl = document.getElementById('utc-time')
+            setInterval(() => {
+                const now = new Date()
+                const utc = new Date(now.getTime() + now.getTimezoneOffset() * 60000)
+                const msk = new Date(utc.getTime() + 3 * 3600000)
+                const hours = String(msk.getHours()).padStart(2, '0')
+                const minutes = String(msk.getMinutes()).padStart(2, '0')
+                const seconds = String(msk.getSeconds()).padStart(2, '0')
+                timeEl.textContent = `${hours}:${minutes}:${seconds} UTC +3`
+            }, 1000)
+        }
+        
+        // Переключение языка (пока заглушка)
+        function switchLanguage(lang) {
+            alert(`Язык переключён на ${lang.toUpperCase()} (реализация двуязычности — в следующих итерациях)`)
+        }
+        
+        // Простая навигация (для демо)
+        function navigateTo(section) {
+            if (section === 'projects') {
+                document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })
+            } else if (section === 'contacts') {
+                document.getElementById('footer').scrollIntoView({ behavior: 'smooth' })
+            } else if (section === 'connect') {
+                alert('Открываем форму связи КОННЕКТ…')
+            } else if (section === 'all-projects') {
+                alert('Переход на страницу «Все проекты» (5 проектов)')
+            } else if (section === 'project1' || section === 'project2') {
+                alert(`Открываем проект ${section === 'project1' ? '«РАСТЕНИЕ МЫСЛИТ НАМИ»' : '«ИВАНГОРОД»'}`)
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+            }
+        }
+        
+        // Плавная анимация появления футера + «уплывание» верхней части
+        function initScrollAnimations() {
+            gsap.registerPlugin(ScrollTrigger)
+            
+            // Большой SAVVA в футере плавно проявляется
+            gsap.fromTo("#footer .large-savva", 
+                { opacity: 0, y: 100 }, 
+                { 
+                    opacity: 0.1, 
+                    y: 0, 
+                    scrollTrigger: {
+                        trigger: "#footer",
+                        start: "top 80%",
+                        end: "bottom 20%",
+                        scrub: 1
+                    }
+                })
+            
+            // При скролле вниз hero и верхняя часть слегка «уплывает» вверх
+            ScrollTrigger.create({
+                trigger: "body",
+                start: "top top",
+                end: "+=2000",
+                onUpdate: (self) => {
+                    if (self.progress > 0.6) {
+                        document.querySelector('header').style.transform = `translateY(-${(self.progress - 0.6) * 120}px)`
+                    }
+                }
+            })
+        }
+        
+        // Автозапуск видео
+        function initVideo() {
+            const video = document.getElementById('hero-video')
+            if (video) {
+                video.play().catch(() => {})
+            }
+        }
+        
+        // Главная инициализация
+        function init() {
+            initializeTailwind()
+            updateTime()
+            initScrollAnimations()
+            initVideo()
+            
+            console.log('%c✅ Главная страница SAVVA готова! Замените пути к изображениям и видео в папке /assets/', 'color:#000;background:#fff;padding:4px 8px;border-radius:4px;font-weight:bold')
+        }
+        
+        window.onload = init
+
+    </script>
+    <script>
+// Следование всплывающей надписи за курсором
+document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.project-card');
+    
+    cards.forEach(card => {
+        const label = card.querySelector('.floating-label');
+        if (!label) return;
+
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            let x = e.clientX - rect.left;
+            let y = e.clientY - rect.top;
+
+            // Ограничиваем положение, чтобы надпись не уходила за края
+            x = Math.max(100, Math.min(x, rect.width - 100));
+            y = Math.max(80, Math.min(y, rect.height - 100));
+
+            label.style.left = `${x}px`;
+            label.style.top = `${y}px`;
+            label.style.opacity = '1';
+        });
+
+        card.addEventListener('mouseleave', () => {
+            label.style.opacity = '0';
+        });
+    });
+});
+</script>
+<script>
+// Переключение кнопки DARK ↔ WHITE
+function toggleThemeButton() {
+    const darkBtn = document.getElementById('dark-btn');
+    const whiteBtn = document.getElementById('white-btn');
+    
+    if (darkBtn.classList.contains('hidden')) {
+        darkBtn.classList.remove('hidden');
+        whiteBtn.classList.add('hidden');
+    } else {
+        darkBtn.classList.add('hidden');
+        whiteBtn.classList.remove('hidden');
+    }
+}
+</script>
+<script>
+// Показывать кнопку "Наверх" при прокрутке
+function toggleScrollTopButton() {
+    const btn = document.getElementById('scrollTopBtn');
+    if (window.scrollY > 600) {
+        btn.classList.remove('opacity-0', 'translate-y-10');
+        btn.classList.add('opacity-100', 'translate-y-0');
+    } else {
+        btn.classList.add('opacity-0', 'translate-y-10');
+        btn.classList.remove('opacity-100', 'translate-y-0');
+    }
+}
+
+// Плавная прокрутка наверх
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+// Слушатель прокрутки
+window.addEventListener('scroll', toggleScrollTopButton);
+
+// Инициализация
+document.addEventListener('DOMContentLoaded', () => {
+    toggleScrollTopButton(); // проверка при загрузке
+});
+</script>
+<script>
+        // ==================== УЛУЧШЕННАЯ ПЛАВАЮЩАЯ ПЛАШКА (ЕЩЁ БЛИЖЕ К КУРСОРУ) ====================
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.project-card');
+            
+            cards.forEach(card => {
+                const label = card.querySelector('.floating-label');
+                if (!label) return;
+
+                let targetX = 0, targetY = 0;
+                let currentX = 0, currentY = 0;
+                let raf = null;
+
+                function lerp(a, b, t) {
+                    return a * (1 - t) + b * t;
+                }
+
+                function animate() {
+                    currentX = lerp(currentX, targetX, 0.22);   // быстрее и отзывчивее
+                    currentY = lerp(currentY, targetY, 0.22);
+
+                    label.style.transform = `translate(${currentX}px, ${currentY}px)`;
+                    raf = requestAnimationFrame(animate);
+                }
+
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    
+                    // ПЛАШКА ОЧЕНЬ БЛИЗКО К КУРСОРУ
+                    targetX = e.clientX - rect.left + 18;   // чуть правее
+                    targetY = e.clientY - rect.top + 28;    // чуть ниже
+
+                    // Ограничиваем внутри карточки
+                    targetX = Math.max(30, Math.min(targetX, rect.width - 220));
+                    targetY = Math.max(30, Math.min(targetY, rect.height - 70));
+
+                    if (!raf) animate();
+                });
+
+                card.addEventListener('mouseenter', () => {
+                    label.style.opacity = '1';
+                    if (!raf) animate();
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    label.style.opacity = '0';
+                    cancelAnimationFrame(raf);
+                    raf = null;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
